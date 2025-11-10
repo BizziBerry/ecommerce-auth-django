@@ -92,44 +92,44 @@ https://img.shields.io/badge/Session_Management-%E2%9C%93-orange
 ## ⚙️ Установка
 
 ### 1. Клонирование и настройка
-'''
+```
 bash
 git clone <repository-url>
 cd ShopShield_Pro
 python -m venv venv
 source venv/bin/activate  # Linux/Mac
  venv\Scripts\activate   # Windows
-'''
+```
 ### 2. Установка зависимостей
-'''
+```
 bash
 pip install django
-'''
+```
 ### 3. Настройка базы данных
-'''
+```
 bash
 python manage.py makemigrations
 python manage.py migrate
-'''
+```
 ### 4. Создание суперпользователя
-'''
+```
 python manage.py createsuperuser
-'''
+```
 ### 5. Запуск сервера
-'''
+```
 bash
 python manage.py runserver
-''' 
+```
 ## 🎮 Использование
 ### 🔧 Административная панель
--Доступ: '''http://127.0.0.1:8000/admin/'''
+-Доступ:```http://127.0.0.1:8000/admin/```
 -Управление пользователями и корзинами
 
 ### 👥 Пользовательские функции
--**Регистрация:** '''http://127.0.0.1:8000/accounts/register/'''
--**Вход:** '''http://127.0.0.1:8000/accounts/login/'''
--**Профиль:** '''http://127.0.0.1:8000/accounts/profile/'''
--**Корзина:** '''http://127.0.0.1:8000/cart/'''
+-**Регистрация:** ```http://127.0.0.1:8000/accounts/register/```
+-**Вход:** ```http://127.0.0.1:8000/accounts/login/```
+-**Профиль:** ```http://127.0.0.1:8000/accounts/profile/```
+-**Корзина:** ```http://127.0.0.1:8000/cart/```
 
 ### 🔒 Безопасность
 -**Подтверждение email** перед активацией аккаунта
@@ -140,7 +140,7 @@ python manage.py runserver
 
 ### 🛠️ Кастомные модели
 #### Пользователь (CustomUser)
-'''
+```
 python
 class CustomUser(AbstractBaseUser):
     email = models.EmailField(unique=True)
@@ -148,15 +148,15 @@ class CustomUser(AbstractBaseUser):
     address = models.TextField()
     is_active = models.BooleanField(default=False)
     is_verified = models.BooleanField(default=False)
-'''
+```
 #### Корзина (Cart)
-'''
+```
 python
 class Cart(models.Model):
     user = models.OneToOneField(CustomUser)
     items = models.ManyToManyField(CartItem)
     created_at = models.DateTimeField(auto_now_add=True)
-'''
+```
 #### 📧 Email система
 **Режимы работы** 
 -**Разработка:**  Письма выводятся в консоль
