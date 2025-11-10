@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Подтверждение email - ShopShield Pro{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-envelope fa-4x text-primary mb-4"></i>
+                    <h2>Проверьте вашу почту</h2>
+                    <p class="lead">Мы отправили письмо с ссылкой для подтверждения на ваш email.</p>
+                    <p>Перейдите по ссылке в письме, чтобы активировать ваш аккаунт.</p>
+                    <div class="alert alert-info mt-4">
+                        <strong>Не получили письмо?</strong><br>
+                        Проверьте папку "Спам" или попробуйте 
+                        <a href="{% url 'accounts:register' %}">зарегистрироваться снова</a>.
+                    </div>
+                    <a href="{% url 'home' %}" class="btn btn-primary mt-3">На главную</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

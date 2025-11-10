@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Недействительная ссылка - ShopShield Pro{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body text-center">
+                    <i class="fas fa-exclamation-triangle fa-4x text-warning mb-4"></i>
+                    <h2>Недействительная ссылка</h2>
+                    <p class="lead">Ссылка для активации недействительна или устарела.</p>
+                    <p>Пожалуйста, запросите новую ссылку для подтверждения email.</p>
+                    <div class="mt-4">
+                        <a href="{% url 'accounts:register' %}" class="btn btn-primary">Зарегистрироваться снова</a>
+                        <a href="{% url 'home' %}" class="btn btn-outline-secondary">На главную</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

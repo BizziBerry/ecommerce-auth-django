@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Личный кабинет - ShopShield Pro{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="profile-sidebar">
+                <div class="text-center mb-4">
+                    <i class="fas fa-user-circle fa-4x text-primary"></i>
+                    <h5 class="mt-2">{{ user.email }}</h5>
+                </div>
+                <div class="list-group">
+                    <a href="{% url 'accounts:profile' %}" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-user"></i> Профиль
+                    </a>
+                    <a href="{% url 'accounts:profile_edit' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-edit"></i> Редактировать профиль
+                    </a>
+                    <a href="{% url 'accounts:security' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-lock"></i> Безопасность
+                    </a>
+                    <a href="{% url 'cart:detail' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-shopping-cart"></i> Корзина
+                    </a>
+                    <a href="{% url 'accounts:delete_account' %}" class="list-group-item list-group-item-action text-danger">
+                        <i class="fas fa-trash"></i> Удалить аккаунт
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">Личный кабинет</h4>
+                </div>
+                <div class="card-body">
+                    <h5>Информация о пользователе</h5>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <p><strong>Email:</strong> {{ user.email }}</p>
+                            <p><strong>Телефон:</strong> {{ user.phone_number|default:"Не указан" }}</p>
+                            <p><strong>Дата регистрации:</strong> {{ user.date_joined|date:"d.m.Y H:i" }}</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Статус аккаунта:</strong> 
+                                {% if user.is_active %}
+                                <span class="badge bg-success">Активен</span>
+                                {% else %}
+                                <span class="badge bg-warning">Не активен</span>
+                                {% endif %}
+                            </p>
+                            <p><strong>Email подтвержден:</strong> 
+                                {% if user.is_verified %}
+                                <span class="badge bg-success">Да</span>
+                                {% else %}
+                                <span class="badge bg-warning">Нет</span>
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <hr>
+                    
+                    <h5>Адрес доставки</h5>
+                    {% if user.address %}
+                        <p>{{ user.address|linebreaks }}</p>
+                    {% else %}
+                        <p class="text-muted">Адрес не указан</p>
+                    {% endif %}
+                    
+                    <hr>
+                    
+                    <h5>История заказов</h5>
+                    <p class="text-muted">Здесь будет отображаться история ваших заказов</p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        Функционал истории заказов находится в разработке.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

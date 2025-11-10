@@ -1,0 +1,68 @@
+{% extends 'base/base.html' %}
+
+{% block title %}Главная - ShopShield Pro{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 mb-4">
+                <i class="fas fa-shield-alt text-primary"></i><br>
+                Добро пожаловать в ShopShield Pro
+            </h1>
+            <p class="lead mb-4">
+                Профессиональная система аутентификации и управления пользователями 
+                для вашего интернет-магазина
+            </p>
+            
+            <div class="row mt-5">
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-user-shield fa-3x text-primary mb-3"></i>
+                            <h5>Безопасная аутентификация</h5>
+                            <p>Защищенная система регистрации и входа с подтверждением email</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-shopping-cart fa-3x text-success mb-3"></i>
+                            <h5>Умная корзина</h5>
+                            <p>Интеграция корзины покупок с системой пользователей</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <i class="fas fa-cogs fa-3x text-info mb-3"></i>
+                            <h5>Личный кабинет</h5>
+                            <p>Полный контроль над профилем и настройками безопасности</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-5">
+                {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:profile' %}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-user"></i> Личный кабинет
+                    </a>
+                    <a href="{% url 'cart:detail' %}" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-shopping-cart"></i> Корзина
+                    </a>
+                {% else %}
+                    <a href="{% url 'accounts:register' %}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-user-plus"></i> Начать работу
+                    </a>
+                    <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary btn-lg">
+                        <i class="fas fa-sign-in-alt"></i> Войти
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
